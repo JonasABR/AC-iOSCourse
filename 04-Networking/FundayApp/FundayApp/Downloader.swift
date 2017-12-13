@@ -13,7 +13,7 @@ class Downloader: NSObject {
     var dataTask: URLSessionDataTask?
     let defaultSession = URLSession(configuration: .default)
 
-    func getDataFromMock (completion: @escaping (_ pastFunday: [PastFunday], _ futureFundaysArray: [FutureFunday]) -> Void) {
+    func getDataFromMock (completion: @escaping (_ pastFunday: [PastFunday], _ futureFundaysArray: [FutureFunday], _ success: Bool) -> Void) {
         let endpoint = "http://demo8129738.mockable.io/fundays"
         dataTask?.cancel()
         
@@ -38,17 +38,14 @@ class Downloader: NSObject {
                             pastFundaysArray.append(contentsOf: past)
                         }
 
-                        completion(pastFundaysArray, futureFundaysArray)
+                        completion(pastFundaysArray, futureFundaysArray, true)
                     } catch {
                         print("An error occurred: \(error)")
                     }
-
-
-                    
-
                     print(response.debugDescription)
                     //self.updateSearchResults(data)
-
+                } else {
+                    completion([],[], false)
                 }
             }
             dataTask?.resume()

@@ -70,13 +70,20 @@ class ViewController: UIViewController, UITableViewDelegate, NVActivityIndicator
 
     func getEvents() {
         self.startAnimating()
-        downloader.getDataFromMock { (pastFunday, futureFunday) in 
-            self.pastFundaysArray = pastFunday
-            self.futureFundaysArray = futureFunday
-            DispatchQueue.main.async {
-                self.stopAnimating()
-                self.tableView.reloadData()
+        downloader.getDataFromMock { (pastFunday, futureFunday, success) in
+            if success {
+                self.pastFundaysArray = pastFunday
+                self.futureFundaysArray = futureFunday
+                DispatchQueue.main.async {
+                    self.stopAnimating()
+                    self.tableView.reloadData()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.stopAnimating()
+                }
             }
+
         }
 
     }
