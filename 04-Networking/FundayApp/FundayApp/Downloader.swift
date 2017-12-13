@@ -30,17 +30,15 @@ class Downloader: NSObject {
                         var pastFundaysArray:[PastFunday] = []
 
                         let funday: FundaySchedule = try unbox(data: data)
-                        DispatchQueue.main.async {
-                            if let future = funday.futureFundays {
-                                futureFundaysArray.append(contentsOf: future)
-                            }
-
-                            if let past = funday.pastFundays {
-                                pastFundaysArray.append(contentsOf: past)
-                            }
-
-                            completion(pastFundaysArray, futureFundaysArray)
+                        if let future = funday.futureFundays {
+                            futureFundaysArray.append(contentsOf: future)
                         }
+
+                        if let past = funday.pastFundays {
+                            pastFundaysArray.append(contentsOf: past)
+                        }
+
+                        completion(pastFundaysArray, futureFundaysArray)
                     } catch {
                         print("An error occurred: \(error)")
                     }
