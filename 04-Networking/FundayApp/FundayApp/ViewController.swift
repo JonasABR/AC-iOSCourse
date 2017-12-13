@@ -17,9 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, NVActivityIndicator
     var pastFundaysArray:[PastFunday] = []
     let dateFormatter = DateFormatter()
     let numberFormatter = NumberFormatter()
-
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask: URLSessionDataTask?
+    let downloader = Downloader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,45 +69,14 @@ class ViewController: UIViewController, UITableViewDelegate, NVActivityIndicator
     }
 
     func getEvents() {
-        let endpoint = "http://demo8129738.mockable.io/fundays"
-        dataTask?.cancel()
         self.startAnimating()
-
-        if let url = URL(string: endpoint) {
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil }
-                if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-
-                    do {
-                        let funday: FundaySchedule = try unbox(data: data)
-                        DispatchQueue.main.async {
-                            if let future = funday.futureFundays {
-                                self.futureFundaysArray.append(contentsOf: future)
-                            }
-
-                            if let past = funday.pastFundays {
-                                self.pastFundaysArray.append(contentsOf: past)
-                            }
-
-                            self.tableView.reloadData()
-                        }
-                    } catch {
-                        print("An error occurred: \(error)")
-                    }
-
-
-                    DispatchQueue.main.async {
-                        self.stopAnimating()
-                    }
-                    
-                    print(response.debugDescription)
-                    //self.updateSearchResults(data)
-
-                }
+        downloader.getDataFromMock { (pastFunday, futureFunday) in 
+            self.pastFundaysArray = pastFunday
+            self.futureFundaysArray = futureFunday
+            DispatchQueue.main.async {
+                self.stopAnimating()
+                self.tableView.reloadData()
             }
-            dataTask?.resume()
         }
 
     }

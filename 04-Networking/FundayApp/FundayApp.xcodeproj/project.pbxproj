@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EF2447D1FE15CBC00A141EB /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF2447C1FE15CBC00A141EB /* Downloader.swift */; };
 		2763EB96262F0046A350C97A /* Pods_FundayApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4717F759CA35EBC6C2BF2AA7 /* Pods_FundayApp.framework */; };
 		339741001F7A9CCB00A46DE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339740FF1F7A9CCB00A46DE4 /* AppDelegate.swift */; };
 		339741021F7A9CCB00A46DE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339741011F7A9CCB00A46DE4 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0C18E9AB0E575B01FA8B37CD /* Pods-FundayAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FundayAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FundayAppTests/Pods-FundayAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0EF2447C1FE15CBC00A141EB /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		339740FC1F7A9CCB00A46DE4 /* FundayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FundayApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		339740FF1F7A9CCB00A46DE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339741011F7A9CCB00A46DE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				3397410B1F7A9CCB00A46DE4 /* LaunchScreen.storyboard */,
 				3397410E1F7A9CCB00A46DE4 /* Info.plist */,
 				339741061F7A9CCB00A46DE4 /* FundayApp.xcdatamodeld */,
+				0EF2447C1FE15CBC00A141EB /* Downloader.swift */,
 			);
 			path = FundayApp;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			files = (
 				339741081F7A9CCB00A46DE4 /* FundayApp.xcdatamodeld in Sources */,
 				339741021F7A9CCB00A46DE4 /* ViewController.swift in Sources */,
+				0EF2447D1FE15CBC00A141EB /* Downloader.swift in Sources */,
 				3397412F1F7C1C1F00A46DE4 /* FundayTableViewCell.swift in Sources */,
 				3397412C1F7AF21A00A46DE4 /* Funday.swift in Sources */,
 				339741001F7A9CCB00A46DE4 /* AppDelegate.swift in Sources */,
